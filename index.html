@@ -6,12 +6,6 @@
     <meta name="color-scheme" content="dark" />
     <title>ROSO · Staff</title>
 
-    <!-- SEO / Social -->
-    <meta name="description" content="Meet the ROSO organization staff — Owner, Co‑Owner, Exec Manager." />
-    <meta property="og:title" content="ROSO · Staff" />
-    <meta property="og:description" content="Meet the ROSO organization staff — Owner, Co‑Owner, Exec Manager." />
-    <meta property="og:type" content="website" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
@@ -24,7 +18,6 @@
         --text: #f9fafb;
         --accent: #ef233c; /* vivid red */
         --accent-2: #e11d48; /* crimson */
-        --ring: #ef4444;
         --shadow: 0 10px 30px rgba(0,0,0,0.45);
         --radius-xl: 20px;
       }
@@ -32,165 +25,97 @@
       html, body { height: 100%; }
       body {
         margin: 0;
-        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        font-family: Inter, system-ui, sans-serif;
         color: var(--text);
-        background: radial-gradient(1200px 600px at 20% -10%, rgba(239, 35, 60, 0.20), transparent 60%),
-                    radial-gradient(900px 500px at 100% 0%, rgba(225, 29, 72, 0.16), transparent 60%),
-                    var(--bg);
-        background-attachment: fixed;
+        background: var(--bg);
       }
-      /* Subtle animated grid backdrop */
-      .backdrop { position: fixed; inset: 0; pointer-events: none; z-index: -1; opacity: .35;
-        background-image: linear-gradient(transparent 23px, rgba(255,255,255,.05) 24px),
-                          linear-gradient(90deg, transparent 23px, rgba(255,255,255,.05) 24px);
-        background-size: 24px 24px;
-        mask-image: radial-gradient(80% 80% at 50% 20%, black 40%, transparent 100%);
-        animation: gridShift 30s linear infinite;
+      header {
+        padding: 20px; text-align: center;
       }
-      @keyframes gridShift { from { background-position: 0 0, 0 0; } to { background-position: 0 24px, 24px 0; } }
-
-      header { position: sticky; top: 0; z-index: 40;
-        backdrop-filter: saturate(140%) blur(8px);
-        background: linear-gradient(to bottom, rgba(10,10,12,.7), rgba(10,10,12,.25));
-        border-bottom: 1px solid rgba(255,255,255,.06);
+      header img {
+        width: 90px;
+        margin-bottom: 12px;
       }
-      .nav { max-width: 1100px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; gap: 16px; justify-content: space-between; }
-      .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
-      .logo {
-        width: 44px; height: 44px; border-radius: 12px; overflow: hidden; display: grid; place-items: center;
-        background: #121316; border: 1px solid rgba(255,255,255,.06); box-shadow: inset 0 0 0 1px rgba(255,255,255,.04), var(--shadow);
+      header h1 { font-size: 2rem; font-weight: 800; color: var(--accent); }
+
+      .section { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+      .section h2 { margin-bottom: 20px; color: var(--accent-2); }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+
+      .card {
+        background: var(--card);
+        border-radius: var(--radius-xl);
+        padding: 20px;
+        box-shadow: var(--shadow);
+        transition: transform .3s ease, box-shadow .3s ease;
+        opacity: 0; transform: translateY(20px);
       }
-      .logo img { width: 100%; height: 100%; object-fit: cover; display:block; }
-      .title { font-weight: 800; letter-spacing: .8px; }
+      .card.in { opacity: 1; transform: translateY(0); transition: opacity .6s ease, transform .6s ease; }
+      .name { font-size: 1.25rem; font-weight: 700; margin-bottom: 6px; }
+      .role { font-size: 0.9rem; color: var(--muted); margin-bottom: 10px; }
 
-      .cta { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: white; background: linear-gradient(90deg, var(--accent), var(--accent-2)); padding: 10px 14px; border-radius: 999px; font-weight: 600; border: 0; box-shadow: 0 10px 25px rgba(239,35,60,.3); transition: transform .2s ease, box-shadow .2s ease; }
-      .cta:hover { transform: translateY(-1px); box-shadow: 0 14px 30px rgba(239,35,60,.35); }
-
-      .hero { max-width: 1100px; margin: 34px auto 10px; padding: 0 20px 20px; position: relative; }
-      .hero h1 { font-size: clamp(28px, 6vw, 48px); line-height: 1.05; margin: 0 0 10px; letter-spacing: -0.6px; }
-      .hero p { color: var(--muted); margin: 0; font-size: clamp(14px, 2vw, 16px); }
-
-      .section { max-width: 1100px; margin: 34px auto 0; padding: 0 20px; }
-      .section h2 { margin: 0 0 10px; opacity: .9; letter-spacing: .4px; }
-      .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
-      .card { grid-column: span 12; background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius-xl); overflow: hidden; position: relative; isolation: isolate; box-shadow: var(--shadow); transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s cubic-bezier(.2,.8,.2,1); }
-      .card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,.6); }
-      .card::before { content: ""; position: absolute; inset: -1px; z-index: -1; border-radius: calc(var(--radius-xl) + 1px); background: conic-gradient(from 180deg at 50% 50%, rgba(239,35,60,.15), rgba(225,29,72,.1), transparent 40%); filter: blur(16px); }
-      .card-inner { display: grid; grid-template-columns: 1fr; gap: 10px; padding: 16px 18px; align-items: center; }
-      .name { font-size: 18px; font-weight: 700; letter-spacing: .3px; }
-
-      @media (min-width: 640px) { .card { grid-column: span 6; } }
-      @media (min-width: 1024px) { .card { grid-column: span 4; } }
-
-      /* Enter animations */
-      .pagefade { opacity: 0; transform: translateY(8px); animation: pageIn .8s ease .05s forwards; }
-      @keyframes pageIn { to { opacity: 1; transform: none; } }
-      .reveal { opacity: 0; transform: translateY(16px) scale(.98); transition: opacity .6s ease, transform .6s ease; }
-      .reveal.in { opacity: 1; transform: translateY(0) scale(1); }
-
-      /* Respect reduced motion */
-      @media (prefers-reduced-motion: reduce) {
-        .backdrop { animation: none; }
-        .card, .cta { transition: none; }
-        .reveal { opacity: 1; transform: none; }
-        .pagefade { opacity: 1; transform: none; animation: none; }
+      .links { display: flex; gap: 10px; }
+      .links a {
+        display: inline-flex; align-items: center; justify-content: center;
+        width: 34px; height: 34px;
+        border-radius: 50%;
+        border: 1px solid rgba(255,255,255,.1);
+        color: white; text-decoration: none;
+        transition: background .3s ease, transform .2s ease;
       }
+      .links a:hover { background: var(--accent); transform: translateY(-2px); }
 
-      .pill { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: #fecaca; background: rgba(239,35,60,.12); border: 1px solid rgba(255,255,255,.08); padding: 6px 10px; border-radius: 999px; }
+      footer { text-align: center; padding: 30px; color: var(--muted); }
     </style>
   </head>
   <body>
-    <div class="backdrop" aria-hidden="true"></div>
-
     <header>
-      <nav class="nav pagefade">
-        <a href="#top" class="brand" aria-label="ROSO Home">
-          <div class="logo" aria-hidden="true">
-            <!-- Put your logo.png next to index.html -->
-            <img src="logo.png" alt="ROSO logo" />
-          </div>
-          <div class="title">ROSO · Staff</div>
-        </a>
-        <a class="cta" href="https://discord.com" target="_blank" rel="noreferrer">Join the Discord</a>
-      </nav>
+      <img src="logo.png" alt="ROSO Logo">
+      <h1>ROSO Staff Team</h1>
     </header>
 
-    <main id="top" class="pagefade" style="animation-delay:.15s">
-      <section class="hero">
-        <span class="pill">Meet the Team</span>
-        <h1>Owner, Co‑Owner & Exec Manager powering <span style="color: var(--accent);">ROSO</span>.</h1>
-        <p>Clean black/red theme with smooth scroll‑in animations. Drop‑in single file for GitHub Pages.</p>
+    <main>
+      <section class="section">
+        <h2>Owner</h2>
+        <div class="grid">
+          <div class="card reveal"><div class="name">Attract</div><div class="role">Owner</div><div class="links"><a href="https://twitter.com/attract" target="_blank">X</a></div></div>
+          <div class="card reveal"><div class="name">Sapph</div><div class="role">Owner</div><div class="links"><a href="https://twitter.com/sapph" target="_blank">X</a></div></div>
+        </div>
       </section>
 
-      <!-- Sections render here -->
-      <div id="sections"></div>
+      <section class="section">
+        <h2>Co-Owner</h2>
+        <div class="grid">
+          <div class="card reveal"><div class="name">Kurivolt</div><div class="role">Co-Owner</div><div class="links"><a href="https://twitter.com/kurivolt" target="_blank">X</a></div></div>
+          <div class="card reveal"><div class="name">Verify Redd</div><div class="role">Co-Owner</div><div class="links"><a href="https://twitter.com/verifyredd" target="_blank">X</a></div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Exec Manager</h2>
+        <div class="grid">
+          <div class="card reveal"><div class="name">Star</div><div class="role">Exec Manager</div><div class="links"><a href="https://twitter.com/rosoideaegg" target="_blank">X</a></div></div>
+        </div>
+      </section>
     </main>
 
-    <footer class="pagefade" style="animation-delay:.25s; max-width:1100px; margin: 26px auto 60px; padding: 0 20px; color: var(--muted); display:flex; justify-content:space-between; gap:12px;">
-      <small>© <span id="year"></span> ROSO. Crafted with ❤ in a black‑and‑red theme.</small>
-      <small><span style="opacity:.7">Static site • No frameworks • GitHub Pages‑ready</span></small>
+    <footer>
+      © <span id="year"></span> ROSO. All rights reserved.
     </footer>
 
-    <template id="sectionTemplate">
-      <section class="section">
-        <h2></h2>
-        <div class="grid"></div>
-      </section>
-    </template>
-
-    <template id="cardTemplate">
-      <article class="card reveal"><div class="card-inner">
-        <div class="name"></div>
-      </div></article>
-    </template>
-
     <script>
-      // ==== Edit your staff here (grouped) ====
-      const GROUPS = [
-        { title: 'Owner', members: ['Attract', 'Sapph'] },
-        { title: 'Co-Owner', members: ['Kurivolt', 'Verify Redd'] },
-        { title: 'Exec Manager', members: ['Star'] },
-      ];
-
-      const sectionTpl = document.getElementById('sectionTemplate');
-      const cardTpl = document.getElementById('cardTemplate');
-      const root = document.getElementById('sections');
-
-      function render() {
-        root.innerHTML = '';
-        const frag = document.createDocumentFragment();
-        GROUPS.forEach(group => {
-          const sec = sectionTpl.content.firstElementChild.cloneNode(true);
-          sec.querySelector('h2').textContent = group.title;
-          const grid = sec.querySelector('.grid');
-          group.members.forEach((name, i) => {
-            const card = cardTpl.content.firstElementChild.cloneNode(true);
-            card.querySelector('.name').textContent = name;
-            grid.appendChild(card);
-          });
-          frag.appendChild(sec);
-        });
-        root.appendChild(frag);
-        revealAll();
-      }
-
-      function revealAll() {
-        const els = document.querySelectorAll('.reveal');
-        const io = new IntersectionObserver(entries => {
-          entries.forEach((e, idx) => {
-            if (e.isIntersecting) {
-              // Stagger a little per section
-              e.target.style.transitionDelay = (idx % 12) * 40 + 'ms';
-              e.target.classList.add('in');
-              io.unobserve(e.target);
-            }
-          });
-        }, { threshold: .12 });
-        els.forEach(el => io.observe(el));
-      }
-
       document.getElementById('year').textContent = new Date().getFullYear();
-      render();
+      // Animate on scroll
+      function revealAll(){
+        const els=document.querySelectorAll('.reveal');
+        const io=new IntersectionObserver(entries=>{
+          entries.forEach(e=>{
+            if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+          });
+        },{threshold:.1});
+        els.forEach(el=>io.observe(el));
+      }
+      revealAll();
     </script>
   </body>
 </html>
