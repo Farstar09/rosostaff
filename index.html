@@ -5,54 +5,144 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ROSO Staff</title>
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000; /* Black background */
-      color: #fff;
+      padding: 0;
     }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0b0b0b;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Header */
     .header {
       text-align: center;
-      padding: 20px;
-      background-color: #1a1a1a;
+      padding: 30px 20px;
+      background: linear-gradient(90deg, #0b0b0b, #1a0000);
+      box-shadow: 0 4px 15px rgba(255,0,0,0.5);
+      animation: glowHeader 3s infinite alternate;
     }
+
     .header img {
       max-width: 200px;
       height: auto;
+      margin-bottom: 15px;
     }
+
+    .header h1 {
+      font-size: 2.5rem;
+      color: #ff0000;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px #ff0000;
+    }
+
+    @keyframes glowHeader {
+      0% { box-shadow: 0 4px 15px rgba(255,0,0,0.3); }
+      50% { box-shadow: 0 4px 25px rgba(255,0,0,0.6); }
+      100% { box-shadow: 0 4px 15px rgba(255,0,0,0.3); }
+    }
+
+    /* Staff Container */
     .container {
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       align-items: flex-start;
+      gap: 50px;
       flex-wrap: wrap;
-      padding: 40px 20px;
+      padding: 50px 20px;
+      flex-grow: 1;
     }
+
     .staff-column {
       background-color: #1a1a1a;
-      border: 2px solid #ff0000; /* Red border */
-      border-radius: 10px;
-      padding: 20px;
+      border-left: 4px solid #ff0000;
+      border-radius: 12px;
+      padding: 30px 20px;
       width: 250px;
-      margin: 10px;
+      transition: transform 0.5s, box-shadow 0.5s;
     }
+
+    .staff-column:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(255,0,0,0.7);
+    }
+
     .staff-column h2 {
       color: #ff0000;
       text-align: center;
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+      text-shadow: 0 0 5px #ff0000;
     }
+
     .staff-column ul {
-      list-style-type: none;
-      padding: 0;
+      list-style: none;
       text-align: center;
     }
+
     .staff-column li {
-      padding: 5px 0;
+      padding: 10px 0;
+      font-size: 1.1rem;
+      color: #fff;
+      position: relative;
+      cursor: default;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    .staff-column li::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background-color: #ff0000;
+      transition: 0.3s;
+    }
+
+    .staff-column li:hover {
+      color: #ff4d4d;
+      text-shadow: 0 0 5px #ff0000;
+    }
+
+    .staff-column li:hover::before {
+      width: 50%;
+      left: 25%;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1a0000;
+      color: #ff0000;
+      letter-spacing: 1px;
+      text-shadow: 0 0 5px #ff0000;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .staff-column {
+        width: 80%;
+      }
     }
   </style>
 </head>
 <body>
   <div class="header">
-    <!-- Logo will go here -->
-    <img src="LOGO_FILE_HERE" alt="ROSO Logo">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAQxklEQVR4AQCBAH7/AAA4O/8ANzr/ADU4/wAzNf8AMTL/AC0u/wAqKv8AJiX/AiIg/woeHP8SGxf/GRgT/x8VEP8jEw3/JhEL/..." alt="ROSO Logo">
     <h1>ROSO Staff</h1>
   </div>
 
@@ -77,5 +167,9 @@
       </ul>
     </div>
   </div>
+
+  <footer>
+    &copy; 2025 ROSO. All rights reserved.
+  </footer>
 </body>
 </html>
