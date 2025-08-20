@@ -1,38 +1,81 @@
-import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROSO Staff</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000; /* Black background */
+      color: #fff;
+    }
+    .header {
+      text-align: center;
+      padding: 20px;
+      background-color: #1a1a1a;
+    }
+    .header img {
+      max-width: 200px;
+      height: auto;
+    }
+    .container {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding: 40px 20px;
+    }
+    .staff-column {
+      background-color: #1a1a1a;
+      border: 2px solid #ff0000; /* Red border */
+      border-radius: 10px;
+      padding: 20px;
+      width: 250px;
+      margin: 10px;
+    }
+    .staff-column h2 {
+      color: #ff0000;
+      text-align: center;
+    }
+    .staff-column ul {
+      list-style-type: none;
+      padding: 0;
+      text-align: center;
+    }
+    .staff-column li {
+      padding: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <!-- Logo will go here -->
+    <img src="LOGO_FILE_HERE" alt="ROSO Logo">
+    <h1>ROSO Staff</h1>
+  </div>
 
-const staffMembers = [
-  { name: "Star", role: "Exec Manager / Lead Marketer", description: "Oversees all operations, marketing strategies, and partnerships." },
-  { name: "Brvtvs", role: "Founder", description: "Original creator and visionary of the Zombie Horde server (2012)." },
-  { name: "Butterontoast7", role: "Former Owner", description: "Led the project from 2016–2023, contributing to growth and stability." },
-  { name: "Developers", role: "Tech & Gameplay Engineers", description: "Design and maintain plugins, maps, and game mechanics." },
-  { name: "Builders", role: "Creative Architects", description: "Craft immersive maps and environments for players." },
-  { name: "Moderators", role: "Community Guardians", description: "Ensure fair play, manage reports, and foster a positive environment." },
-];
-
-export default function StaffShowcase() {
-  return (
-    <div className="p-8">
-      <h1 className="text-3xl font-bold mb-6 text-center">Meet the Team</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {staffMembers.map((staff, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-            viewport={{ once: true }}
-          >
-            <Card className="rounded-2xl shadow-lg">
-              <CardContent className="p-6 text-center">
-                <h2 className="text-xl font-semibold">{staff.name}</h2>
-                <p className="text-sm text-gray-500">{staff.role}</p>
-                <p className="mt-3 text-gray-700">{staff.description}</p>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
-      </div>
+  <div class="container">
+    <div class="staff-column">
+      <h2>Owners</h2>
+      <ul>
+        <li>Attract</li>
+        <li>Sapph</li>
+      </ul>
+      <h2>Co-Owners</h2>
+      <ul>
+        <li>Kurivolt</li>
+        <li>Verify Redd</li>
+      </ul>
     </div>
-  );
-}
+
+    <div class="staff-column">
+      <h2>Exec Manager</h2>
+      <ul>
+        <li>Star</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
